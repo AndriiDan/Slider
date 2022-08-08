@@ -9,7 +9,6 @@ let index = 0;
 
 // ф-ція, яка знімає clssa='active' з усіх слайдів і робить активний слайд 
 const activeSlide = n => {
-    console.log(n);
     // проходжу по псевдомасиву slides і беру з нього окремі слайди slide
     for (slide of slides) {
         // у кожного slide видаляю клас active
@@ -20,19 +19,36 @@ const activeSlide = n => {
 };
 
 // функція для перемикання на наступний слайд
-let nextSlide = () => {
+const nextSlide = () => {
     // перевірка на останній слайд; 'якщо слайд останній, то наступний слайд буде з індексом 0'
     if (index == slides.length - 1) {
         index = 0;
-        // оновити слайд
+        // оновити слайд на екрані
         activeSlide(index);
     } else {
-        // якщо не останній, то index збільшую на 1
+        // index збільшую на 1
         index++;
-        // оновити слайд
+        // оновити слайд на екрані
         activeSlide(index);
     }
 };
 
+// функція для перемикання на попередній слайд
+const prevSlide = () => {
+    // перевірка на перший слайд; якщо слайд перший, то наступний слайд буде з максимальним індексом
+    if (index == 0) {
+        index = slides.length - 1;
+        // оновити слайд на екрані
+        activeSlide(index);
+    } else {
+        // index зменшую на 1
+        index--;
+        // оновити слайд на екрані
+        activeSlide(index);
+    }
+}
+
 // додамо подію на кнопку "next"
 next.addEventListener('click', nextSlide);
+// додамо подію на кнопку "prev"
+prev.addEventListener('click', prevSlide);
