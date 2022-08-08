@@ -14,9 +14,20 @@ const activeSlide = n => {
         // у кожного slide видаляю клас active
         slide.classList.remove('active');
     }
-    // для текущого slide дода. клас active
+    // для текущого slide додаю клас active
     slides[n].classList.add('active');
 };
+
+// ф-ція, яка знімає class="active" з усіх крапок (dot) і робить один активний dot
+const activeDot = n => {
+    // проходжу по псевдомасиву dots і беру з нього окремі крапки dot
+    for (dot of dots) {
+        // у кожного dot видаляю клас active
+        dot.classList.remove('active');
+    }
+    // для текущого dot додаю клас active
+    dots[n].classList.add('active');
+}
 
 // функція для перемикання на наступний слайд
 const nextSlide = () => {
@@ -25,11 +36,15 @@ const nextSlide = () => {
         index = 0;
         // оновити слайд на екрані
         activeSlide(index);
+        // оновити dot на екрані
+        activeDot(index);
     } else {
         // index збільшую на 1
         index++;
         // оновити слайд на екрані
         activeSlide(index);
+        // оновити dot на екрані
+        activeDot(index);
     }
 };
 
@@ -40,11 +55,15 @@ const prevSlide = () => {
         index = slides.length - 1;
         // оновити слайд на екрані
         activeSlide(index);
+        // оновити dot на екрані
+        activeDot(index);
     } else {
         // index зменшую на 1
         index--;
         // оновити слайд на екрані
         activeSlide(index);
+        // оновити dot на екрані
+        activeDot(index);
     }
 }
 
