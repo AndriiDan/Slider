@@ -82,3 +82,6 @@ dots.forEach((item, indexDot) => {
 next.addEventListener('click', nextSlide);
 // додамо подію на кнопку "prev"
 prev.addEventListener('click', prevSlide);
+
+// автоматично перемикає слайди кожні 3 сек
+setInterval(nextSlide, 3000);
