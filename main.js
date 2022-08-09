@@ -67,6 +67,17 @@ const prevSlide = () => {
     }
 }
 
+// зміна слайда при кліку по "dot"
+dots.forEach((item, indexDot) => {
+    // відслідковую клік по кожному item
+    item.addEventListener('click', () => {
+        // співставити index слайда та dot
+        index = indexDot;
+        // оновити слайд та dot на екрані
+        prepareCurrentSlide(index);
+    })
+})
+
 // додамо подію на кнопку "next"
 next.addEventListener('click', nextSlide);
 // додамо подію на кнопку "prev"
